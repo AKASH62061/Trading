@@ -1,6 +1,6 @@
 import axios from 'axios'
 const api = axios.create({ 
-  baseURL: (import.meta as any).env?.VITE_API_URL || 'https://papertrader-backend.onrender.com/', 
+  baseURL: (import.meta as any).env?.VITE_API_URL || 'https://papertrader-backend.onrender.com', 
   timeout: 10000 
 })
 
