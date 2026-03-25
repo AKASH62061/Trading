@@ -29,7 +29,7 @@ function ModelVoteRow({ name, vote }: { name: string; vote: any }) {
         <div style={{ height: '100%', width: `${vote.prob * 100}%`, background: col, borderRadius: 1 }} />
       </div>
       <div style={{ width: 28, fontFamily: 'JetBrains Mono,monospace', fontSize: 9, color: col, textAlign: 'right' }}>{(vote.prob * 100).toFixed(0)}%</div>
-      <div style={{ width: 34, fontFamily: 'JetBrains Mono,monospace', fontSize: 8, color, textAlign: 'right' }}>w:{(vote.weight || 0).toFixed(2)}</div>
+      <div style={{ width: 34, fontFamily: 'JetBrains Mono,monospace', fontSize: 8, color: col, textAlign: 'right' }}>w:{(vote.weight || 0).toFixed(2)}</div>
     </div>
   )
 }
