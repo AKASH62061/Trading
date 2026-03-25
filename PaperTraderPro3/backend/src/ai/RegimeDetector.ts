@@ -58,7 +58,7 @@ function calcADX(candles: Candle[], n = 14): number {
 }
 
 function calcATR(candles: Candle[], n = 14): number {
-  if (candles.length < n) return candles[candles.length - 1]?.close * 0.01 ?? 1
+  if (candles.length < n) return (candles[candles.length - 1]?.close ?? 100) * 0.01
   const trs = candles.slice(-n - 1).map((c, i, a) => {
     if (i === 0) return c.high - c.low
     const prev = a[i - 1].close
