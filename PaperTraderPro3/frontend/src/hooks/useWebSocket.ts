@@ -6,7 +6,7 @@ export function useWebSocket() {
   const{setPrices,updatePrices,setMetrics,setPortfolio,setSignals,setWsConnected,notify}=useStore()
   const connect=useCallback(()=>{
     if(ws.current?.readyState===WebSocket.OPEN)return
-    const url=import.meta.env.VITE_WS_URL||'ws://localhost:4000/ws'
+    const url=(import.meta as any).env?.VITE_WS_URL||'ws://localhost:4000/ws'
     try{
       const s=new WebSocket(url);ws.current=s
       s.onopen=()=>{retries.current=0;setWsConnected(true);s.send(JSON.stringify({type:'PING'}))}
