@@ -162,8 +162,7 @@ export class PortfolioManager {
     const pos=this.positions.get(posId)
     if(!pos||pos.status!=='OPEN') return {error:'Not found'}
     const pd=this.sim.getPrice(pos.symbol); if(!pd) return {error:'No price'}
-    return this.placeOrder({symbol:pos.symbol,symbolName:pos.symbolName,side:pos.side==='BUY'?'SELL':'BUY',type:'MARKET',quantity:pos.quantity,marketType:pos.marketType,leverage:pos.leverage})
-  }
+    return this.placeOrder({symbol:pos.symbol,symbolName:pos.symbolName,side:pos.side==='BUY'?'SELL':'BUY',type:'MARKET',quantity:pos.quantity,marketType:pos.marketType,leverage:pos.leverage,multiplier:pos.multiplier})
 
   closeAll() { for(const[id]of this.positions) this.closePosition(id) }
 
