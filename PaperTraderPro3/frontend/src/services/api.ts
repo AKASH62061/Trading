@@ -1,5 +1,5 @@
 import axios from 'axios'
-const api = axios.create({ baseURL: (import.meta as any).env?.VITE_WS_URL || 'http://localhost:4000/api', timeout:10000 })
+const api = axios.create({ baseURL: (import.meta as any).env?.VITE_WS_URL || 'https://papertrader-backend.onrender.com/', timeout:10000 })
 
 export const mktApi      = { getAll:()=>api.get('/markets').then(r=>r.data), getCandles:(sym:string,tf='15m',limit=200)=>api.get(`/prices/${sym}/candles`,{params:{tf,limit}}).then(r=>r.data), getHeatmap:()=>api.get('/prices/heatmap').then(r=>r.data) }
 export const portApi     = { getMetrics:()=>api.get('/portfolio/metrics').then(r=>r.data), getPositions:()=>api.get('/portfolio/positions').then(r=>r.data), getOrders:()=>api.get('/portfolio/orders').then(r=>r.data), closePos:(id:string)=>api.delete(`/portfolio/positions/${id}`).then(r=>r.data), closeAll:()=>api.post('/portfolio/close-all').then(r=>r.data), cancelOrder:(id:string)=>api.delete(`/portfolio/orders/${id}`).then(r=>r.data), reset:()=>api.post('/portfolio/reset').then(r=>r.data) }
